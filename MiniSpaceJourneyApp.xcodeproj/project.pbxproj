@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,7 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8CBA16D922B55BED004C8CEC /* MiniSpaceJourneyIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniSpaceJourneyIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CBA16D922B55BED004C8CEC /* MiniSpaceJourneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniSpaceJourneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBA16DC22B55BED004C8CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CBA16DE22B55BED004C8CEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8CBA16E122B55BED004C8CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		8CBA16D022B55BED004C8CEC = {
 			isa = PBXGroup;
 			children = (
-				8CBA16DB22B55BED004C8CEC /* MiniSpaceJourneyIOS */,
+				8CBA16DB22B55BED004C8CEC /* MiniSpaceJourneyApp */,
 				8CBA16F122B55C01004C8CEC /* MiniSpaceJourney */,
 				8CBA170022B55C02004C8CEC /* MiniSpaceJourney Extension */,
 				8CBA16DA22B55BED004C8CEC /* Products */,
@@ -128,14 +128,14 @@
 		8CBA16DA22B55BED004C8CEC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8CBA16D922B55BED004C8CEC /* MiniSpaceJourneyIOS.app */,
+				8CBA16D922B55BED004C8CEC /* MiniSpaceJourneyApp.app */,
 				8CBA16F022B55C01004C8CEC /* MiniSpaceJourney.app */,
 				8CBA16FC22B55C01004C8CEC /* MiniSpaceJourney Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8CBA16DB22B55BED004C8CEC /* MiniSpaceJourneyIOS */ = {
+		8CBA16DB22B55BED004C8CEC /* MiniSpaceJourneyApp */ = {
 			isa = PBXGroup;
 			children = (
 				8CBA16DC22B55BED004C8CEC /* AppDelegate.swift */,
@@ -145,7 +145,7 @@
 				8CBA16E522B55BEE004C8CEC /* LaunchScreen.storyboard */,
 				8CBA16E822B55BEE004C8CEC /* Info.plist */,
 			);
-			path = MiniSpaceJourneyIOS;
+			path = MiniSpaceJourneyApp;
 			sourceTree = "<group>";
 		};
 		8CBA16F122B55C01004C8CEC /* MiniSpaceJourney */ = {
@@ -175,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8CBA16D822B55BED004C8CEC /* MiniSpaceJourneyIOS */ = {
+		8CBA16D822B55BED004C8CEC /* MiniSpaceJourneyApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8CBA16EB22B55BEE004C8CEC /* Build configuration list for PBXNativeTarget "MiniSpaceJourneyIOS" */;
+			buildConfigurationList = 8CBA16EB22B55BEE004C8CEC /* Build configuration list for PBXNativeTarget "MiniSpaceJourneyApp" */;
 			buildPhases = (
 				8CBA16D522B55BED004C8CEC /* Sources */,
 				8CBA16D622B55BED004C8CEC /* Frameworks */,
@@ -189,9 +189,9 @@
 			dependencies = (
 				8CBA170D22B55C02004C8CEC /* PBXTargetDependency */,
 			);
-			name = MiniSpaceJourneyIOS;
+			name = MiniSpaceJourneyApp;
 			productName = MiniSpaceJourneyIOS;
-			productReference = 8CBA16D922B55BED004C8CEC /* MiniSpaceJourneyIOS.app */;
+			productReference = 8CBA16D922B55BED004C8CEC /* MiniSpaceJourneyApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8CBA16EF22B55C01004C8CEC /* MiniSpaceJourney */ = {
@@ -249,8 +249,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 8CBA16D422B55BED004C8CEC /* Build configuration list for PBXProject "MiniSpaceJourneyIOS" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 8CBA16D422B55BED004C8CEC /* Build configuration list for PBXProject "MiniSpaceJourneyApp" */;
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -262,7 +262,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8CBA16D822B55BED004C8CEC /* MiniSpaceJourneyIOS */,
+				8CBA16D822B55BED004C8CEC /* MiniSpaceJourneyApp */,
 				8CBA16EF22B55C01004C8CEC /* MiniSpaceJourney */,
 				8CBA16FB22B55C01004C8CEC /* MiniSpaceJourney Extension */,
 			);
@@ -487,15 +487,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PPKSE537F6;
-				INFOPLIST_FILE = MiniSpaceJourneyIOS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MiniSpaceJourneyApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -505,15 +505,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PPKSE537F6;
-				INFOPLIST_FILE = MiniSpaceJourneyIOS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MiniSpaceJourneyApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -529,7 +529,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyIOS.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -551,7 +551,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyIOS.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -570,7 +570,7 @@
 				DEVELOPMENT_TEAM = PPKSE537F6;
 				IBSC_MODULE = MiniSpaceJourney_Extension;
 				INFOPLIST_FILE = MiniSpaceJourney/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyIOS.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyApp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -589,7 +589,7 @@
 				DEVELOPMENT_TEAM = PPKSE537F6;
 				IBSC_MODULE = MiniSpaceJourney_Extension;
 				INFOPLIST_FILE = MiniSpaceJourney/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyIOS.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popov.Daniil.MiniSpaceJourneyApp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -602,7 +602,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8CBA16D422B55BED004C8CEC /* Build configuration list for PBXProject "MiniSpaceJourneyIOS" */ = {
+		8CBA16D422B55BED004C8CEC /* Build configuration list for PBXProject "MiniSpaceJourneyApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CBA16E922B55BEE004C8CEC /* Debug */,
@@ -611,7 +611,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8CBA16EB22B55BEE004C8CEC /* Build configuration list for PBXNativeTarget "MiniSpaceJourneyIOS" */ = {
+		8CBA16EB22B55BEE004C8CEC /* Build configuration list for PBXNativeTarget "MiniSpaceJourneyApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CBA16EC22B55BEE004C8CEC /* Debug */,
