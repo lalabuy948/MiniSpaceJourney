@@ -9,6 +9,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
+        <!--Memu-->
+        <scene sceneID="CzN-PW-ubj">
+            <objects>
+                <controller identifier="MainMenu" title="Memu" fullScreen="YES" id="kfn-Bo-AGf"/>
+            </objects>
+            <point key="canvasLocation" x="-310" y="292"/>
+        </scene>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
