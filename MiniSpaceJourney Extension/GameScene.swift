@@ -59,9 +59,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self;
         
         // spawns alien
-        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
         // fire torpedos
-        _ = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(fireTorpedo), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTorpedo), userInfo: nil, repeats: true)
     }
     
     @objc func addAlien() {
@@ -149,27 +149,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             torpedoCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode);
         }
         
-        if (secondBody.categoryBitMask & alienCategory) != 0
-            && (firstBody.categoryBitMask & spaceshipCategory) != 0 {
-            alienCollidedWithSpaceship(alienNode: secondBody.node as! SKSpriteNode, spaceshipNode: firstBody.node as! SKSpriteNode);
+        if  (firstBody.categoryBitMask & alienCategory) != 0
+            && (secondBody.categoryBitMask & spaceshipCategory) != 0 {
+            alienCollidedWithSpaceship(alienNode: firstBody.node as! SKSpriteNode, spaceshipNode: secondBody.node as! SKSpriteNode);
+            print("Alien collided with spaceship");
         }
     }
     
     func torpedoCollideWithAlien( torpedoNode:SKSpriteNode, alienNode:SKSpriteNode) {
-//        let explosion = SKSpriteNode(fileNamed: "")!;
-//        explosion.size = CGSize(width: 10, height: 10);
-//        explosion.position = alienNode.position;
+        let explosion = SKSpriteNode(fileNamed: "explosion")!;
+        explosion.size = CGSize(width: 5, height: 5);
+        explosion.position = alienNode.position;
         
-//        self.addChild(explosion);
+        self.addChild(explosion);
         
         // self.run(SKAction.playSoundFileNamed(".mp3", waitForCompletion: false))
         
         torpedoNode.removeFromParent();
         alienNode.removeFromParent();
         
-//        self.run(SKAction.wait(forDuration: 0.1)) {
-//            explosion.removeFromParent();
-//        }
+        self.run(SKAction.wait(forDuration: 0.1)) {
+            explosion.removeFromParent();
+        }
         
         score += 1;
     }
