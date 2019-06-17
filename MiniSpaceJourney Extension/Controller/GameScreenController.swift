@@ -50,6 +50,9 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
 
         gameScene.moveSpaceshipBy(amountX: cgStep, amountY: 0)
     }
+    @IBAction func swipedRight(_ sender: Any) {
+        self.pushController(withName: "MainMenu", context: nil)
+    }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user

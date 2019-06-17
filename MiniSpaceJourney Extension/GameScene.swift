@@ -12,6 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var spinnyNode : SKShapeNode?
     
+    // just CGFloat null, no magic numbers
     var cgNull:CGFloat = 0.0;
     
     // score
@@ -26,11 +27,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // aliens
     var possibleAliens = ["alien", "alien2", "alien3"];
     
+    // each object has own category for collisions
     let spaceshipCategory:UInt32     = 0x1 << 2;
     let alienCategory:UInt32         = 0x1 << 1;
     let photonTorpedoCategory:UInt32 = 0x1 << 0;
     
     override func sceneDidLoad() {
+        // assign few properties to objects from GameScene
         for node in self.children {
             if (node.name == "spaceship") {
                 if let ship:SKSpriteNode = node as? SKSpriteNode {

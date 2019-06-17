@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kfn-Bo-AGf">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,17 @@
         <!--Menu-->
         <scene sceneID="CzN-PW-ubj">
             <objects>
-                <controller identifier="MainMenu" title="Menu" fullScreen="YES" id="kfn-Bo-AGf"/>
+                <controller identifier="MainMenu" title="Menu" id="kfn-Bo-AGf" customClass="MainMenuController" customModule="MiniSpaceJourney" customModuleProvider="target">
+                    <items>
+                        <label height="40" alignment="left" text="Mini Space Journey" textAlignment="center" minimumScaleFactor="0.90000000000000002" id="YYM-0V-GaN"/>
+                        <button width="1" alignment="center" title="Play 🚀" id="GEZ-Qr-nAa">
+                            <fontDescription key="font" type="system" pointSize="24"/>
+                            <connections>
+                                <segue destination="AgC-eL-Hgc" kind="push" id="Vy2-YZ-CVT"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="-258" y="31"/>
         </scene>
@@ -21,13 +31,22 @@
             <objects>
                 <controller identifier="GameScreen" title="GameScene" fullScreen="YES" id="AgC-eL-Hgc" customClass="GameScreenController" customModule="MiniSpaceJourney" customModuleProvider="target">
                     <items>
-                        <spriteKitScene alignment="left" id="ARY-87-yzO"/>
+                        <spriteKitScene alignment="left" id="ARY-87-yzO">
+                            <gestureRecognizers>
+                                <swipeGestureRecognizer id="chX-iw-wva">
+                                    <connections>
+                                        <action selector="swipedRight:" destination="AgC-eL-Hgc" id="l0D-zs-zTH"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                            </gestureRecognizers>
+                        </spriteKitScene>
                     </items>
                     <connections>
                         <outlet property="skInterface" destination="ARY-87-yzO" id="U6w-Od-uXj"/>
                     </connections>
                 </controller>
             </objects>
+            <point key="canvasLocation" x="46" y="-245"/>
         </scene>
     </scenes>
 </document>
