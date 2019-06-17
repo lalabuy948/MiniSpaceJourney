@@ -152,7 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if  (firstBody.categoryBitMask & alienCategory) != 0
             && (secondBody.categoryBitMask & spaceshipCategory) != 0 {
             alienCollidedWithSpaceship(alienNode: firstBody.node as! SKSpriteNode, spaceshipNode: secondBody.node as! SKSpriteNode);
-            print("Alien collided with spaceship");
         }
     }
     
