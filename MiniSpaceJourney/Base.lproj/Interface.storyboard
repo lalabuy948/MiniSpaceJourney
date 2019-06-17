@@ -9,17 +9,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
-        <!--Memu-->
+        <!--Menu-->
         <scene sceneID="CzN-PW-ubj">
             <objects>
-                <controller identifier="MainMenu" title="Memu" fullScreen="YES" id="kfn-Bo-AGf"/>
+                <controller identifier="MainMenu" title="Menu" fullScreen="YES" id="kfn-Bo-AGf"/>
             </objects>
-            <point key="canvasLocation" x="-310" y="292"/>
+            <point key="canvasLocation" x="-258" y="31"/>
         </scene>
-        <!--Interface Controller-->
+        <!--GameScene-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="MiniSpaceJourney" customModuleProvider="target">
+                <controller identifier="GameScreen" title="GameScene" fullScreen="YES" id="AgC-eL-Hgc" customClass="GameScreenController" customModule="MiniSpaceJourney" customModuleProvider="target">
                     <items>
                         <spriteKitScene alignment="left" id="ARY-87-yzO"/>
                     </items>

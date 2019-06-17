@@ -16,7 +16,7 @@
 		8CBA16F422B55C01004C8CEC /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA16F222B55C01004C8CEC /* Interface.storyboard */; };
 		8CBA16F622B55C01004C8CEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA16F522B55C01004C8CEC /* Assets.xcassets */; };
 		8CBA16FD22B55C02004C8CEC /* MiniSpaceJourney Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CBA16FC22B55C01004C8CEC /* MiniSpaceJourney Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8CBA170222B55C02004C8CEC /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA170122B55C02004C8CEC /* InterfaceController.swift */; };
+		8CBA170222B55C02004C8CEC /* GameScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA170122B55C02004C8CEC /* GameScreenController.swift */; };
 		8CBA170422B55C02004C8CEC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA170322B55C02004C8CEC /* GameScene.sks */; };
 		8CBA170622B55C02004C8CEC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA170522B55C02004C8CEC /* GameScene.swift */; };
 		8CBA170822B55C02004C8CEC /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA170722B55C02004C8CEC /* ExtensionDelegate.swift */; };
@@ -80,7 +80,7 @@
 		8CBA16F522B55C01004C8CEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CBA16F722B55C01004C8CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CBA16FC22B55C01004C8CEC /* MiniSpaceJourney Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MiniSpaceJourney Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CBA170122B55C02004C8CEC /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		8CBA170122B55C02004C8CEC /* GameScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenController.swift; sourceTree = "<group>"; };
 		8CBA170322B55C02004C8CEC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		8CBA170522B55C02004C8CEC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8CBA170722B55C02004C8CEC /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C1DB81E22B8288D00BA62F3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8CBA170122B55C02004C8CEC /* GameScreenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8CBA16D022B55BED004C8CEC = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +161,7 @@
 		8CBA170022B55C02004C8CEC /* MiniSpaceJourney Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8CBA170122B55C02004C8CEC /* InterfaceController.swift */,
+				8C1DB81E22B8288D00BA62F3 /* Controller */,
 				8CBA170322B55C02004C8CEC /* GameScene.sks */,
 				8CBA170522B55C02004C8CEC /* GameScene.swift */,
 				8CBA170722B55C02004C8CEC /* ExtensionDelegate.swift */,
@@ -309,7 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CBA170622B55C02004C8CEC /* GameScene.swift in Sources */,
-				8CBA170222B55C02004C8CEC /* InterfaceController.swift in Sources */,
+				8CBA170222B55C02004C8CEC /* GameScreenController.swift in Sources */,
 				8CBA170822B55C02004C8CEC /* ExtensionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

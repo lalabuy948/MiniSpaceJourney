@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController, WKCrownDelegate {
+class GameScreenController: WKInterfaceController, WKCrownDelegate {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
     
