@@ -12,21 +12,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var spinnyNode : SKShapeNode?
     
-    var cgNull:CGFloat = 0.0
+    var cgNull:CGFloat = 0.0;
     
     // score
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
+            scoreLabel.text = "Score: \(score)";
         }
     }
     // spaceship
-    var spaceship:SKSpriteNode = SKSpriteNode(imageNamed: "shuttle")
+    var spaceship:SKSpriteNode = SKSpriteNode(imageNamed: "shuttle");
     // aliens
-    var possibleAliens = ["alien", "alien2", "alien3"]
-    let alienCategory:UInt32         = 0x1 << 1
-    let photonTorpedoCategory:UInt32 = 0x1 << 0
+    var possibleAliens = ["alien", "alien2", "alien3"];
+    
+    let spaceshipCategory:UInt32     = 0x1 << 2;
+    let alienCategory:UInt32         = 0x1 << 1;
+    let photonTorpedoCategory:UInt32 = 0x1 << 0;
     
     override func sceneDidLoad() {
         for node in self.children {
@@ -34,6 +36,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let ship:SKSpriteNode = node as? SKSpriteNode {
                     spaceship = ship;
                     spaceship.zPosition = 1;
+                    
+                    spaceship.physicsBody?.categoryBitMask    = spaceshipCategory;
+                    spaceship.physicsBody?.contactTestBitMask = alienCategory;
+                    spaceship.physicsBody?.collisionBitMask   = 0;
                 }
             }
             
@@ -52,7 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity         = CGVector( dx: 0, dy: 0);
         self.physicsWorld.contactDelegate = self;
         
-        // spawn aliens
+        // spawns alien
         _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
         // fire torpedos
         _ = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(fireTorpedo), userInfo: nil, repeats: true)
@@ -69,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         alien.physicsBody?.isDynamic = true;
 
         alien.physicsBody?.categoryBitMask    = alienCategory;
-        alien.physicsBody?.contactTestBitMask = photonTorpedoCategory;
+        alien.physicsBody?.contactTestBitMask = photonTorpedoCategory | spaceshipCategory;
         alien.physicsBody?.collisionBitMask   = 0;
         
         self.addChild(alien);
@@ -140,12 +146,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (firstBody.categoryBitMask & photonTorpedoCategory) != 0
             && (secondBody.categoryBitMask & alienCategory) != 0 {
-            torpedoCollideWithAlien(torpedo: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode);
+            torpedoCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode);
+        }
+        
+        if (secondBody.categoryBitMask & alienCategory) != 0
+            && (firstBody.categoryBitMask & spaceshipCategory) != 0 {
+            alienCollidedWithSpaceship(alienNode: secondBody.node as! SKSpriteNode, spaceshipNode: firstBody.node as! SKSpriteNode);
         }
     }
     
-    func torpedoCollideWithAlien( torpedo:SKSpriteNode, alienNode:SKSpriteNode) {
-//         let explosion = SKSpriteNode(fileNamed: "")!;
+    func torpedoCollideWithAlien( torpedoNode:SKSpriteNode, alienNode:SKSpriteNode) {
+//        let explosion = SKSpriteNode(fileNamed: "")!;
 //        explosion.size = CGSize(width: 10, height: 10);
 //        explosion.position = alienNode.position;
         
@@ -153,7 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // self.run(SKAction.playSoundFileNamed(".mp3", waitForCompletion: false))
         
-        torpedo.removeFromParent();
+        torpedoNode.removeFromParent();
         alienNode.removeFromParent();
         
 //        self.run(SKAction.wait(forDuration: 0.1)) {
@@ -161,6 +172,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        }
         
         score += 1;
+    }
+    
+    func alienCollidedWithSpaceship( alienNode:SKSpriteNode, spaceshipNode:SKSpriteNode) {
+        alienNode.removeFromParent();
+        
+        score = 0;
     }
     
     override func update(_ currentTime: TimeInterval) {
