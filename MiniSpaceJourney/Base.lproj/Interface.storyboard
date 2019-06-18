@@ -21,10 +21,31 @@
                                 <segue destination="AgC-eL-Hgc" kind="push" id="Vy2-YZ-CVT"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Settings" id="UAF-QU-lXC">
+                            <fontDescription key="font" type="system" pointSize="20"/>
+                            <connections>
+                                <segue destination="mZe-Cs-aIe" kind="push" id="yse-sB-mfv"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
             <point key="canvasLocation" x="-258" y="31"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="5FS-e5-3MO">
+            <objects>
+                <controller identifier="SettingsMenu" title="Settings" id="mZe-Cs-aIe" customClass="SettingsMenuController" customModule="MiniSpaceJourney" customModuleProvider="target">
+                    <items>
+                        <picker height="100" alignment="left" id="7bu-sK-xkA">
+                            <connections>
+                                <action selector="pickedSelectedItem:" destination="mZe-Cs-aIe" id="9tz-cF-Wfn"/>
+                            </connections>
+                        </picker>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="52" y="31"/>
         </scene>
         <!--GameScene-->
         <scene sceneID="aou-V4-d1y">
@@ -46,7 +67,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="46" y="-245"/>
+            <point key="canvasLocation" x="52" y="-263"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,8 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
     
+    public var crownSensivity:Double = 20.0
+    
     var gameScene:GameScene!
     
     override func awake(withContext context: Any?) {
@@ -42,7 +44,7 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
         // convert crown rotation to CGFloat
-        let step   = NSNumber.init(value: rotationalDelta * 20.0).floatValue
+        let step   = NSNumber.init(value: rotationalDelta * crownSensivity).floatValue
         let cgStep = CGFloat(step)
         
         // log whats happened

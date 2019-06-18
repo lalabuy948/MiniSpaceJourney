@@ -7,7 +7,6 @@
 //
 
 import WatchKit
-import Foundation
 
 
 class MainMenuController: WKInterfaceController {
