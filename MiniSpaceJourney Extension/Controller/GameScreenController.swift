@@ -50,7 +50,13 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
 
         gameScene.moveSpaceshipBy(amountX: cgStep, amountY: 0)
     }
+
     @IBAction func swipedRight(_ sender: Any) {
+        
+        WKInterfaceController.reloadRootControllers(
+            withNames: ["MainMenu"], contexts: []
+        )
+        
         self.pushController(withName: "MainMenu", context: nil)
     }
     

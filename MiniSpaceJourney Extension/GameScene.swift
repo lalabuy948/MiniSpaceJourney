@@ -159,8 +159,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func torpedoCollideWithAlien( torpedoNode:SKSpriteNode, alienNode:SKSpriteNode) {
+        // add explosion
         let explosion = SKSpriteNode(fileNamed: "explosion")!;
-        explosion.size = CGSize(width: 5, height: 5);
+        
+        explosion.size     = CGSize(width: 5, height: 5);
         explosion.position = alienNode.position;
         
         self.addChild(explosion);
