@@ -15,6 +15,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // just CGFloat null, no magic numbers
     var cgNull:CGFloat = 0.0;
     
+    var amountOfAliens:Int = 1;
+    var alienSpeed:TimeInterval = 6;
+    var spawnAliensSpeed:TimeInterval  = 1.0;
+    var spawnTorpedoSpeed:TimeInterval = 0.8;
+    
+    var alienTimer: Timer?
+    var torpedoTimer: Timer?
+    
     // score
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
@@ -61,39 +69,85 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity         = CGVector( dx: 0, dy: 0);
         self.physicsWorld.contactDelegate = self;
         
+        setTimers()
+        
+        // speedup gameplay
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateTimers), userInfo: nil, repeats: true)
+    }
+    
+    func setTimers() {
         // spawns alien
-        _ = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
+        alienTimer   = Timer.scheduledTimer(timeInterval: spawnAliensSpeed, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
         // fire torpedos
-        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTorpedo), userInfo: nil, repeats: true)
+        torpedoTimer = Timer.scheduledTimer(timeInterval: spawnTorpedoSpeed, target: self, selector: #selector(fireTorpedo), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimers() {
+        // spawns alien
+        alienTimer?.invalidate()
+        // fire torpedos
+        torpedoTimer?.invalidate()
+        
+    }
+    
+    @objc func updateTimers() {
+        stopTimers()
+        
+        if (spawnAliensSpeed >= 0.4) {
+            spawnAliensSpeed  -= 0.05; print(spawnAliensSpeed);
+        }
+            
+        if (spawnTorpedoSpeed >= 0.2) {
+            spawnTorpedoSpeed -= 0.05; print(spawnTorpedoSpeed);
+        }
+        
+        if (alienSpeed >= 4) {
+            alienSpeed -= 0.1;
+            
+        }
+        
+        if (score % 50 == 0) {
+            amountOfAliens += 1
+        }
+        
+        setTimers()
     }
     
     @objc func addAlien() {
-        let possibleAlien = possibleAliens.randomElement()!;
-        let alien         = SKSpriteNode(imageNamed: possibleAlien);
-        let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
+        for _ in 1...amountOfAliens {
+            let possibleAlien = possibleAliens.randomElement()!;
+            let alien         = SKSpriteNode(imageNamed: possibleAlien);
+            let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
 
-        alien.position    = CGPoint(x: CGFloat(randomX), y: self.frame.size.height / 2 - alien.size.height);
+            alien.position    = CGPoint(x: CGFloat(randomX), y: self.frame.size.height / 2 - alien.size.height);
 
-        alien.physicsBody            = SKPhysicsBody(rectangleOf: alien.size);
-        alien.physicsBody?.isDynamic = true;
+            alien.physicsBody            = SKPhysicsBody(rectangleOf: alien.size);
+            alien.physicsBody?.isDynamic = true;
 
-        alien.physicsBody?.categoryBitMask    = alienCategory;
-        alien.physicsBody?.contactTestBitMask = photonTorpedoCategory | spaceshipCategory;
-        alien.physicsBody?.collisionBitMask   = 0;
-        
-        self.addChild(alien);
-        
-        let animationDuration:TimeInterval = 6;
-        var actionArray = [SKAction]();
-        
-        actionArray.append(SKAction.move(to: CGPoint(x: alien.position.x, y: -self.frame.height), duration: animationDuration));
-        actionArray.append(SKAction.removeFromParent());
-        
-        alien.run(SKAction.sequence(actionArray));
+            alien.physicsBody?.categoryBitMask    = alienCategory;
+            alien.physicsBody?.contactTestBitMask = photonTorpedoCategory | spaceshipCategory;
+            alien.physicsBody?.collisionBitMask   = 0;
+            
+            self.addChild(alien);
+            
+            let animationDuration:TimeInterval = 6;
+            var actionArray = [SKAction]();
+            
+            var movingToPosition:CGPoint = CGPoint(x: alien.position.x, y: -self.frame.height)
+            if (Int.random(in: 0...10) % 3 == 0 && score >= 50 ) {
+                movingToPosition = CGPoint(x: spaceship.position.x, y: -self.frame.height)
+            }
+            
+            actionArray.append(SKAction.move(to: movingToPosition, duration: animationDuration));
+            actionArray.append(SKAction.removeFromParent());
+            
+            alien.run(SKAction.sequence(actionArray));
+        }
     }
     
     @objc func fireTorpedo() {
-        // self.run(SKAction.playSoundFileNamed(".mp3", waitForCompletion: false))
+        // @todo: Find a way how to preload sounds not to have fps drop
+        // self.run(SKAction.playSoundFileNamed("shoot.wav", waitForCompletion: false))
         
         let torpedoNode = SKSpriteNode(imageNamed: "torpedo");
         torpedoNode.position    = spaceship.position;
@@ -181,6 +235,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func alienCollidedWithSpaceship( alienNode:SKSpriteNode, spaceshipNode:SKSpriteNode) {
         alienNode.removeFromParent();
+        
+        // add explosion
+        let explosion = SKSpriteNode(fileNamed: "explosion")!;
+        
+        explosion.size     = CGSize(width: 5, height: 5);
+        explosion.position = spaceshipNode.position;
+        
+        self.addChild(explosion);
+        
+        self.run(SKAction.wait(forDuration: 0.1)) {
+            explosion.removeFromParent();
+        }
         
         score = 0;
     }
