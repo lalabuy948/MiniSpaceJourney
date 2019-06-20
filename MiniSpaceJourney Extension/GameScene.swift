@@ -82,15 +82,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         torpedoTimer = Timer.scheduledTimer(timeInterval: spawnTorpedoSpeed, target: self, selector: #selector(fireTorpedo), userInfo: nil, repeats: true)
     }
     
-    func stopTimers() {
+    func stopTimers() -> Void {
         // spawns alien
         alienTimer?.invalidate()
         // fire torpedos
         torpedoTimer?.invalidate()
-        
     }
     
-    @objc func updateTimers() {
+    func resetTimers() -> Void {
+        amountOfAliens    = 1;
+        alienSpeed        = 6;
+        spawnAliensSpeed  = 1.0;
+        spawnTorpedoSpeed = 0.8;
+        
+        updateTimers()
+    }
+    
+    @objc func updateTimers() -> Void {
         stopTimers()
         
         if (spawnAliensSpeed >= 0.4) {
@@ -236,6 +244,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func alienCollidedWithSpaceship( alienNode:SKSpriteNode, spaceshipNode:SKSpriteNode) {
         alienNode.removeFromParent();
         
+        resetTimers()
+
         // add explosion
         let explosion = SKSpriteNode(fileNamed: "explosion")!;
         
@@ -244,7 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(explosion);
         
-        self.run(SKAction.wait(forDuration: 0.1)) {
+        self.run(SKAction.wait(forDuration: 0.3)) {
             explosion.removeFromParent();
         }
         
