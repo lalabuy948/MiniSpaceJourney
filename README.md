@@ -4,6 +4,10 @@ This is the copy of the Space Invandors and my first real game and swift 5 expir
 
 ## Version 0.0.1 
 
+![preview](Static/0.0.1/preview.png)
+
+### Gameplay
+
 ![Record-0.0.1](Static/0.0.1/record-0.0.1.gif)
 
 ## Stack:
