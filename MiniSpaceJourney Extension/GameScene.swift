@@ -78,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setTimers() {
         // speedup gameplay
-        gameplayTimer   = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(accelerateGameplay), userInfo: nil, repeats: true)
+        gameplayTimer   = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(accelerateGameplay), userInfo: nil, repeats: true)
         // spawns alien
         spawnAlienTimer = Timer.scheduledTimer(timeInterval: spawnAliensSpeed, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
         // fire torpedos
@@ -87,18 +87,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func accelerateGameplay() {
         if (alienSpeed >= 4) {
-            alienSpeed -= 0.1
+            alienSpeed -= 0.2
         }
         
         if (spawnAliensSpeed >= 0.4) {
-            spawnAliensSpeed -= 0.05
+            spawnAliensSpeed -= 0.1
         }
         
-        if (spawnTorpedoSpeed >= 0.3) {
+        if (spawnTorpedoSpeed >= 0.05) {
             spawnTorpedoSpeed -= 0.1
         }
         
-        if (alienSpeed == 4 && score & 50 == 0) {
+        if (amountOfAliens != 0 && amountOfAliens < 5 && score != 0 && score % 20 == 0) {
             amountOfAliens += 1
         }
     }
@@ -133,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.addChild(alien);
             
-            let animationDuration:TimeInterval = 6;
+            let animationDuration:TimeInterval = alienSpeed;
             var actionArray = [SKAction]();
             
             var movingToPosition:CGPoint = CGPoint(x: alien.position.x, y: -self.frame.height)
@@ -179,9 +179,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func moveSpaceshipBy(amountX:CGFloat, amountY:CGFloat) {
         
-        if (amountX > 0.3 || amountX < -0.3) {
+        if (amountX != 0) {
             if (self.scene?.isPaused == true) {
-                self.scene?.isPaused = false
+                unpause()
             }
         }
         
@@ -244,8 +244,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func alienCollidedWithSpaceship( alienNode:SKSpriteNode, spaceshipNode:SKSpriteNode) {
         alienNode.removeFromParent();
-        
-        stopTimers()
 
         // add explosion
         let explosion = SKSpriteNode(fileNamed: "explosion")!;
@@ -259,12 +257,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion.removeFromParent();
         }
         
-        if (self.scene?.isPaused == false) {
-            self.scene?.isPaused = true
-        }
+        pause()
         
         score = 0;
     }
+    
+    public func pause() {
+        stopTimers()
+        
+        if (self.scene?.isPaused == false) {
+            self.scene?.isPaused = true
+        }
+    }
+    
+    public func unpause() {
+        if (self.scene?.isPaused == true) {
+            self.scene?.isPaused = false
+            resetGameplay()
+            setTimers()
+        }
+    }
+    
+    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
