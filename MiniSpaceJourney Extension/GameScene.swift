@@ -178,8 +178,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func moveSpaceshipBy(amountX:CGFloat, amountY:CGFloat) {
+        print(amountX)
         
-        if (amountX != 0) {
+        if (amountX >= 2 || amountX <= -2) {
             if (self.scene?.isPaused == true) {
                 unpause()
             }
@@ -230,6 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(explosion);
         
+        // @todo: Find a way how to preload sounds not to have fps drop
         // self.run(SKAction.playSoundFileNamed(".mp3", waitForCompletion: false))
         
         torpedoNode.removeFromParent();
@@ -257,6 +259,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion.removeFromParent();
         }
         
+        // @todo: Better pause handling
         pause()
         
         score = 0;
