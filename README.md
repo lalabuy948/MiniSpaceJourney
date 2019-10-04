@@ -1,6 +1,6 @@
 # Mini Space Journey
 
-This is the copy of the Space Invandors and my first real game and swift 5 expirience.
+This is the copy of the Space Invandors and my first game in swift 5 expirience.
 
 ## Version 0.0.1 
 
