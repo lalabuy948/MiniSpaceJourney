@@ -15,3 +15,10 @@ This is the copy of the Space Invandors and my first game in swift 5 expirience.
 Most of the logic done with `WatchKit`, `UIKite` and of course `SpriteKit`
 
 For `sqlite` I use this lib: https://github.com/stephencelis/SQLite.swift
+
+
+## Goal
+
+- [ ] 50 Github stars - standalone WacthOS game with free access to testflight(i will just put link in this readme file)
+- [ ] 100 Github stars - Score board with highest score across all users
+- [ ] 150 Github stars - 3 different enviroments (8bit style, fancy vector, funny one)
