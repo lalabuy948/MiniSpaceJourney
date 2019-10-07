@@ -15,12 +15,12 @@
 		8C3188C6234BC12200CCC78E /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188C5234BC12200CCC78E /* explosion.sks */; };
 		8C3188C9234BC13000CCC78E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188C7234BC13000CCC78E /* GameScene.swift */; };
 		8C3188CA234BC13000CCC78E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188C8234BC13000CCC78E /* GameScene.sks */; };
-		8C3188D1234BC18200CCC78E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188CF234BC18200CCC78E /* Interface.storyboard */; };
 		8C3188D8234BC3F200CCC78E /* SettingsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188D5234BC3F200CCC78E /* SettingsMenuController.swift */; };
 		8C3188D9234BC3F200CCC78E /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188D6234BC3F200CCC78E /* MainMenuController.swift */; };
 		8C3188DA234BC3F200CCC78E /* GameScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188D7234BC3F200CCC78E /* GameScreenController.swift */; };
 		8C3188DD234BC40100CCC78E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188DC234BC40100CCC78E /* Database.swift */; };
 		8C3188DE234BC49700CCC78E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188A2234BBE5200CCC78E /* Assets.xcassets */; };
+		8C3188E4234BCDE100CCC78E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188E1234BCDE100CCC78E /* Interface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,11 +77,11 @@
 		8C3188C5234BC12200CCC78E /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explosion.sks; sourceTree = "<group>"; };
 		8C3188C7234BC13000CCC78E /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8C3188C8234BC13000CCC78E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		8C3188D0234BC18200CCC78E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../MiniSpaceJourneyApp/MiniSpaceJourney/Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		8C3188D5234BC3F200CCC78E /* SettingsMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuController.swift; sourceTree = "<group>"; };
 		8C3188D6234BC3F200CCC78E /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		8C3188D7234BC3F200CCC78E /* GameScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreenController.swift; sourceTree = "<group>"; };
 		8C3188DC234BC40100CCC78E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		8C3188EA234BD33600CCC78E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Interface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3188A2234BBE5200CCC78E /* Assets.xcassets */,
-				8C3188CF234BC18200CCC78E /* Interface.storyboard */,
+				8C3188E1234BCDE100CCC78E /* Interface.storyboard */,
 				8C3188A4234BBE5200CCC78E /* Info.plist */,
 			);
 			path = "MiniSpaceJourney WatchKit App";
@@ -264,7 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3188D1234BC18200CCC78E /* Interface.storyboard in Resources */,
+				8C3188E4234BCDE100CCC78E /* Interface.storyboard in Resources */,
 				8C3188A3234BBE5200CCC78E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,10 +312,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8C3188CF234BC18200CCC78E /* Interface.storyboard */ = {
+		8C3188E1234BCDE100CCC78E /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8C3188D0234BC18200CCC78E /* Base */,
+				8C3188EA234BD33600CCC78E /* en */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -379,6 +379,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
 		};
@@ -428,9 +429,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -523,9 +526,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PPKSE537F6;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -536,9 +540,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PPKSE537F6;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
