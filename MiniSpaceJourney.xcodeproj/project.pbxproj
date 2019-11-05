@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C113882237235AB00BE5C4B /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C113881237235AB00BE5C4B /* Starfield.sks */; };
 		8C31889B234BBE5100CCC78E /* MiniSpaceJourney WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8C31889A234BBE5100CCC78E /* MiniSpaceJourney WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8C3188A3234BBE5200CCC78E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188A2234BBE5200CCC78E /* Assets.xcassets */; };
 		8C3188AA234BBE5200CCC78E /* MiniSpaceJourney WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8C3188A9234BBE5200CCC78E /* MiniSpaceJourney WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C113881237235AB00BE5C4B /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Starfield.sks; path = Assets/Starfield.sks; sourceTree = SOURCE_ROOT; };
 		8C318896234BBE5100CCC78E /* MiniSpaceJourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniSpaceJourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C31889A234BBE5100CCC78E /* MiniSpaceJourney WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MiniSpaceJourney WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3188A2234BBE5200CCC78E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				8C3188C7234BC13000CCC78E /* GameScene.swift */,
 				8C3188B0234BBE5200CCC78E /* ExtensionDelegate.swift */,
 				8C3188C5234BC12200CCC78E /* explosion.sks */,
+				8C113881237235AB00BE5C4B /* Starfield.sks */,
 				8C3188B2234BBE5200CCC78E /* Assets.xcassets */,
 				8C3188B4234BBE5200CCC78E /* Info.plist */,
 			);
@@ -275,6 +278,7 @@
 			files = (
 				8C3188B3234BBE5200CCC78E /* Assets.xcassets in Resources */,
 				8C3188CA234BC13000CCC78E /* GameScene.sks in Resources */,
+				8C113882237235AB00BE5C4B /* Starfield.sks in Resources */,
 				8C3188DE234BC49700CCC78E /* Assets.xcassets in Resources */,
 				8C3188C6234BC12200CCC78E /* explosion.sks in Resources */,
 			);
