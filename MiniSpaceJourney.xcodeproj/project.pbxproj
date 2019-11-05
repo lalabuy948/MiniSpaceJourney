@@ -454,6 +454,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -476,6 +477,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -495,6 +497,7 @@
 				DEVELOPMENT_TEAM = PPKSE537F6;
 				IBSC_MODULE = MiniSpaceJourney_WatchKit_Extension;
 				INFOPLIST_FILE = "MiniSpaceJourney WatchKit App/Info.plist";
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -514,6 +517,7 @@
 				DEVELOPMENT_TEAM = PPKSE537F6;
 				IBSC_MODULE = MiniSpaceJourney_WatchKit_Extension;
 				INFOPLIST_FILE = "MiniSpaceJourney WatchKit App/Info.plist";
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -530,7 +534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PPKSE537F6;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -544,7 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PPKSE537F6;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = si.popov.daniil.MiniSpaceJourney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
