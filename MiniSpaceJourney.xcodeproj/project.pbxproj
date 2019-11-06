@@ -21,7 +21,7 @@
 		8C3188DA234BC3F200CCC78E /* GameScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188D7234BC3F200CCC78E /* GameScreenController.swift */; };
 		8C3188DD234BC40100CCC78E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3188DC234BC40100CCC78E /* Database.swift */; };
 		8C3188DE234BC49700CCC78E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188A2234BBE5200CCC78E /* Assets.xcassets */; };
-		8C3188E4234BCDE100CCC78E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188E1234BCDE100CCC78E /* Interface.storyboard */; };
+		8C67914A237244E7000BCDA1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3188E1234BCDE100CCC78E /* Interface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,7 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3188E4234BCDE100CCC78E /* Interface.storyboard in Resources */,
+				8C67914A237244E7000BCDA1 /* Interface.storyboard in Resources */,
 				8C3188A3234BBE5200CCC78E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,6 +47,13 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
         let step   = NSNumber.init(value: rotationalDelta * crownSensivity).floatValue
         let cgStep = CGFloat(step)
         
+//        That works awfuly
+//        if (step >= 0 ) {
+//            WKInterfaceDevice.current().play(.directionUp)
+//        } else {
+//            WKInterfaceDevice.current().play(.directionDown)
+//        }
+
         // log whats happened
         // print("Crown: \(cgStep)")
 

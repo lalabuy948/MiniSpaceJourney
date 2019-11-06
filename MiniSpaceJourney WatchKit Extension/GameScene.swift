@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import WatchKit.WKInterfaceDevice
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -78,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setTimers() {
         // speedup gameplay
-        gameplayTimer   = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(accelerateGameplay), userInfo: nil, repeats: true)
+        gameplayTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(accelerateGameplay), userInfo: nil, repeats: true)
         // spawns alien
         spawnAlienTimer = Timer.scheduledTimer(timeInterval: spawnAliensSpeed, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
         // fire torpedos
@@ -178,7 +179,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func moveSpaceshipBy(amountX:CGFloat, amountY:CGFloat) {
-        print(amountX)
         
         if (amountX >= 2 || amountX <= -2) {
             if (self.scene?.isPaused == true) {
@@ -255,10 +255,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(explosion);
         
+        WKInterfaceDevice.current().play(.failure)
+        
         self.run(SKAction.wait(forDuration: 0.3)) {
             explosion.removeFromParent();
         }
         
+        sleep(1)
         // @todo: Better pause handling
         pause()
         
