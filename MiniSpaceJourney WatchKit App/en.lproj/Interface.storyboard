@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kfn-Bo-AGf">
-    <device id="watch38" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kfn-Bo-AGf">
+    <device id="watch38"/>
     <dependencies>
-        <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
         <!--Menu-->
         <scene sceneID="CzN-PW-ubj">
             <objects>
-                <controller identifier="MainMenu" title="Menu" id="kfn-Bo-AGf" customClass="MainMenuController" customModule="MiniSpaceJourney" customModuleProvider="target">
+                <controller identifier="MainMenu" title="Menu" id="kfn-Bo-AGf" customClass="MainMenuController" customModule="MiniSpaceJourney_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label height="40" alignment="left" text="Mini Space Journey" textAlignment="center" minimumScaleFactor="0.90000000000000002" id="YYM-0V-GaN"/>
+                        <label width="1" height="61" alignment="left" text="Mini Space Journey" textAlignment="center" numberOfLines="2" id="YYM-0V-GaN">
+                            <fontDescription key="font" style="UICTFontTextStyleTitle3"/>
+                        </label>
+                        <label height="30" alignment="left" text="Highest score: 0" id="4gk-lV-rf4"/>
                         <button width="1" alignment="center" title="Play 🚀" id="GEZ-Qr-nAa">
                             <fontDescription key="font" type="system" pointSize="24"/>
                             <connections>
                                 <segue destination="AgC-eL-Hgc" kind="push" id="Vy2-YZ-CVT"/>
                             </connections>
                         </button>
-                        <button width="1" alignment="left" title="Settings" id="UAF-QU-lXC">
+                        <button width="1" alignment="left" hidden="YES" title="Settings" id="UAF-QU-lXC">
                             <fontDescription key="font" type="system" pointSize="20"/>
                             <connections>
                                 <segue destination="mZe-Cs-aIe" kind="push" id="yse-sB-mfv"/>
                             </connections>
                         </button>
                     </items>
+                    <variation key="default">
+                        <mask key="items">
+                            <exclude reference="UAF-QU-lXC"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="highestScoreLabel" destination="4gk-lV-rf4" id="cye-eF-ben"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="-258" y="31"/>
@@ -35,7 +43,7 @@
         <!--Settings-->
         <scene sceneID="5FS-e5-3MO">
             <objects>
-                <controller identifier="SettingsMenu" title="Settings" id="mZe-Cs-aIe" customClass="SettingsMenuController" customModule="MiniSpaceJourney" customModuleProvider="target">
+                <controller identifier="SettingsMenu" title="Settings" id="mZe-Cs-aIe" customClass="SettingsMenuController" customModule="MiniSpaceJourney_WatchKit_App" customModuleProvider="target">
                     <items>
                         <picker height="100" alignment="left" id="7bu-sK-xkA">
                             <connections>
@@ -50,7 +58,7 @@
         <!--GameScene-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="GameScreen" title="GameScene" fullScreen="YES" id="AgC-eL-Hgc" customClass="GameScreenController" customModule="MiniSpaceJourney" customModuleProvider="target">
+                <controller identifier="GameScreen" title="GameScene" fullScreen="YES" id="AgC-eL-Hgc" customClass="GameScreenController" customModule="MiniSpaceJourney_WatchKit_App" customModuleProvider="target">
                     <items>
                         <spriteKitScene alignment="left" id="ARY-87-yzO">
                             <gestureRecognizers>
