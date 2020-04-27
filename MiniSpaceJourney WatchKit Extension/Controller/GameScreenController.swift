@@ -47,8 +47,7 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
         let step   = NSNumber.init(value: rotationalDelta * crownSensivity).floatValue
         let cgStep = CGFloat(step)
         
-        // log whats happened
-        // print("Crown: \(cgStep)")
+        WKInterfaceDevice.current().play(.click)
 
         gameScene.moveSpaceshipBy(amountX: cgStep, amountY: 0)
     }

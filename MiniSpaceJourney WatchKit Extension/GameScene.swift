@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var highestScorekey: String = "MiniSpaceJourneyHighestScore";
+    
     private var spinnyNode : SKShapeNode?
     
     var gameplayTimer:Timer?
@@ -19,7 +21,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // just CGFloat null, no magic numbers
     var cgNull:CGFloat = 0.0;
     
-    var amountOfAliens:Int = 1;
     var alienSpeed:TimeInterval = 6;
     var spawnAliensSpeed:TimeInterval  = 1.0;
     var spawnTorpedoSpeed:TimeInterval = 0.8;
@@ -90,16 +91,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             alienSpeed -= 0.2
         }
         
-        if (spawnAliensSpeed >= 0.4) {
+        if (spawnAliensSpeed >= 0.1) {
             spawnAliensSpeed -= 0.1
         }
         
-        if (spawnTorpedoSpeed >= 0.05) {
+        if (spawnTorpedoSpeed >= 0.01) {
             spawnTorpedoSpeed -= 0.1
-        }
-        
-        if (amountOfAliens != 0 && amountOfAliens < 5 && score != 0 && score % 20 == 0) {
-            amountOfAliens += 1
         }
     }
     
@@ -110,48 +107,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func resetGameplay() {
-        amountOfAliens    = 1;
         alienSpeed        = 6;
         spawnAliensSpeed  = 1.0;
         spawnTorpedoSpeed = 0.8;
     }
     
     @objc func addAlien() {
-        for _ in 1...amountOfAliens {
-            let possibleAlien = possibleAliens.randomElement()!;
-            let alien         = SKSpriteNode(imageNamed: possibleAlien);
-            let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
+        let possibleAlien = possibleAliens.randomElement()!;
+        let alien         = SKSpriteNode(imageNamed: possibleAlien);
+        let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
 
-            alien.position    = CGPoint(x: CGFloat(randomX), y: self.frame.size.height / 2 - alien.size.height);
+        alien.position    = CGPoint(x: CGFloat(randomX), y: self.frame.size.height / 2 - alien.size.height);
 
-            alien.physicsBody            = SKPhysicsBody(rectangleOf: alien.size);
-            alien.physicsBody?.isDynamic = true;
+        alien.physicsBody            = SKPhysicsBody(rectangleOf: alien.size);
+        alien.physicsBody?.isDynamic = true;
 
-            alien.physicsBody?.categoryBitMask    = alienCategory;
-            alien.physicsBody?.contactTestBitMask = photonTorpedoCategory | spaceshipCategory;
-            alien.physicsBody?.collisionBitMask   = 0;
-            
-            self.addChild(alien);
-            
-            let animationDuration:TimeInterval = alienSpeed;
-            var actionArray = [SKAction]();
-            
-            var movingToPosition:CGPoint = CGPoint(x: alien.position.x, y: -self.frame.height)
-            if (Int.random(in: 0...10) % 3 == 0 && score >= 50 ) {
-                movingToPosition = CGPoint(x: spaceship.position.x, y: -self.frame.height)
-            }
-            
-            actionArray.append(SKAction.move(to: movingToPosition, duration: animationDuration));
-            actionArray.append(SKAction.removeFromParent());
-            
-            alien.run(SKAction.sequence(actionArray));
+        alien.physicsBody?.categoryBitMask    = alienCategory;
+        alien.physicsBody?.contactTestBitMask = photonTorpedoCategory | spaceshipCategory;
+        alien.physicsBody?.collisionBitMask   = 0;
+        
+        self.addChild(alien);
+        
+        let animationDuration:TimeInterval = alienSpeed;
+        var actionArray = [SKAction]();
+        
+        var movingToPosition:CGPoint = CGPoint(x: alien.position.x, y: -self.frame.height)
+        if (Int.random(in: 0...10) % 3 == 0 && score >= 50 ) {
+            movingToPosition = CGPoint(x: spaceship.position.x, y: -self.frame.height)
         }
+        
+        actionArray.append(SKAction.move(to: movingToPosition, duration: animationDuration));
+        actionArray.append(SKAction.removeFromParent());
+        
+        alien.run(SKAction.sequence(actionArray));
     }
     
     @objc func fireTorpedo() {
-        // @todo: Find a way how to preload sounds not to have fps drop
-        // self.run(SKAction.playSoundFileNamed("shoot.wav", waitForCompletion: false))
-        
         let torpedoNode = SKSpriteNode(imageNamed: "torpedo");
         torpedoNode.position    = spaceship.position;
         torpedoNode.position.y += 5;
@@ -178,7 +169,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func moveSpaceshipBy(amountX:CGFloat, amountY:CGFloat) {
-        print(amountX)
         
         if (amountX >= 2 || amountX <= -2) {
             if (self.scene?.isPaused == true) {
@@ -231,9 +221,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(explosion);
         
-        // @todo: Find a way how to preload sounds not to have fps drop
-        // self.run(SKAction.playSoundFileNamed(".mp3", waitForCompletion: false))
-        
         torpedoNode.removeFromParent();
         alienNode.removeFromParent();
         
@@ -259,8 +246,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosion.removeFromParent();
         }
         
+        self.updateHighestScore(score: self.score);
+        
         // @todo: Better pause handling
-        pause()
+        pause();
         
         score = 0;
     }
@@ -281,7 +270,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
+    func updateHighestScore(score: Int) -> Void {
+
+        let defaults = UserDefaults.standard
+
+        let highestScore = defaults.integer(forKey: self.highestScorekey)
+        if (highestScore < score) {
+            defaults.set(score, forKey: self.highestScorekey)
+        }
+    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
