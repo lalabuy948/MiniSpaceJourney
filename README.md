@@ -3,7 +3,7 @@
 <h1 align="center">Mini Space Journey 🚀</h1>
 
 <p align="center">
-  <a href="https://developer.apple.com/swift/"><img src="https://badgen.net/badge/Swift/5.2/oranger"/></a>
+  <a href="https://developer.apple.com/swift/"><img src="https://badgen.net/badge/Swift/5.2/orange"/></a>
   <a href="https://github.com/lalabuy948/MiniSpaceJourney/releases"><img src="https://badgen.net/github/release/lalabuy948/MiniSpaceJourney"/></a>
   <a href="/LICENCE"><img src="https://img.shields.io/badge/licence-ccpl-green"/></a>
 </p>
