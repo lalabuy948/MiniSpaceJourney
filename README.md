@@ -9,13 +9,18 @@
 </p>
 
 <p align="center">
-  This is the copy of the Space Invandors and my first game in swift 5.
+  Kind of Space Invaders game written in <code>swift 5</code> using <code>spriteKit</code> for watchOS 5+.
 </p>
 
 <br><br>
 
-![preview](Static/0.0.1/preview.png)
+![preview](/github/0.0.1/preview.png)
 
-## Gameplay
+<hr>
+<br>
 
-![Record-0.0.1](Static/0.0.1/record-0.0.1.gif)
+<p align="center">
+  <a target="_blank" rel="noopener noreferrer" href="/github/0.0.1/record-0.0.1.gif">
+    <img src="/github/0.0.1/record-0.0.1.gif" alt="Record-0.0.1" style="width:100%;">
+  </a>
+</p>
