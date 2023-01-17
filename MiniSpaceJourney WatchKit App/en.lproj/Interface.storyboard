@@ -11,7 +11,7 @@
             <objects>
                 <controller identifier="MainMenu" title="Menu" backgroundImage="space" fullScreen="YES" id="kfn-Bo-AGf" customClass="MainMenuController" customModule="MiniSpaceJourney_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="1" height="61" alignment="left" text="Mini Space Journey" textAlignment="center" numberOfLines="2" id="YYM-0V-GaN">
+                        <label width="1" height="80" alignment="left" text="Mini Space Journey" textAlignment="center" numberOfLines="2" id="YYM-0V-GaN">
                             <fontDescription key="font" style="UICTFontTextStyleTitle3"/>
                         </label>
                         <label height="30" alignment="left" text="Highest score: 0" id="4gk-lV-rf4"/>
