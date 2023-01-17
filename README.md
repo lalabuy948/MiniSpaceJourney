@@ -14,7 +14,7 @@
 
 <br><br>
 
-![preview](/github/0.0.1/preview.png)
+![preview](/github/0.1.0/preview.png)
 
 <hr>
 <br>
@@ -24,3 +24,8 @@
     <img src="/github/0.0.1/record-0.0.1.gif" alt="Record-0.0.1" style="width:100%;">
   </a>
 </p>
+
+Tech used: 
+- https://www.midjourney.com
+- https://www.remove.bg
+- https://www.appicon.co/#image-sets
