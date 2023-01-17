@@ -9,13 +9,14 @@
         <!--Menu-->
         <scene sceneID="CzN-PW-ubj">
             <objects>
-                <controller identifier="MainMenu" title="Menu" id="kfn-Bo-AGf" customClass="MainMenuController" customModule="MiniSpaceJourney_WatchKit_App" customModuleProvider="target">
+                <controller identifier="MainMenu" title="Menu" backgroundImage="space" fullScreen="YES" id="kfn-Bo-AGf" customClass="MainMenuController" customModule="MiniSpaceJourney_WatchKit_App" customModuleProvider="target">
                     <items>
                         <label width="1" height="61" alignment="left" text="Mini Space Journey" textAlignment="center" numberOfLines="2" id="YYM-0V-GaN">
                             <fontDescription key="font" style="UICTFontTextStyleTitle3"/>
                         </label>
                         <label height="30" alignment="left" text="Highest score: 0" id="4gk-lV-rf4"/>
                         <button width="1" alignment="center" title="Play 🚀" id="GEZ-Qr-nAa">
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" pointSize="24"/>
                             <connections>
                                 <segue destination="AgC-eL-Hgc" kind="push" id="Vy2-YZ-CVT"/>
@@ -53,7 +54,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="52" y="31"/>
+            <point key="canvasLocation" x="133" y="-195"/>
         </scene>
         <!--GameScene-->
         <scene sceneID="aou-V4-d1y">
@@ -75,7 +76,10 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="52" y="-263"/>
+            <point key="canvasLocation" x="133" y="218"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="space" width="341" height="341"/>
+    </resources>
 </document>
