@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let scoreLab:SKLabelNode = node as? SKLabelNode {
                     scoreLabel           = scoreLab;
                     scoreLabel.text      = "Score: 0";
-                    scoreLabel.fontName  = "Helvetica";
+                    scoreLabel.fontName  = "Helvetica-Bold";
                     scoreLabel.fontSize  = 24;
                     scoreLabel.zPosition = 1;
                     score = 0;
