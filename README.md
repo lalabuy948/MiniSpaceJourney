@@ -29,3 +29,4 @@ Tech used:
 - https://www.midjourney.com
 - https://www.remove.bg
 - https://www.appicon.co/#image-sets
+- https://www.figma.com
