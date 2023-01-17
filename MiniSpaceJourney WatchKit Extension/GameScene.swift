@@ -160,6 +160,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         torpedoNode.physicsBody?.usesPreciseCollisionDetection = true;
         
+        torpedoNode.size.width = torpedoNode.size.width / self.frame.width * 40
+        torpedoNode.size.height = torpedoNode.size.height / self.frame.height * 40
+        
         self.addChild(torpedoNode);
         
         let animationDuration:TimeInterval = 0.3;
