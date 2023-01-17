@@ -115,6 +115,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func addAlien() {
         let possibleAlien = possibleAliens.randomElement()!;
         let alien         = SKSpriteNode(imageNamed: possibleAlien);
+
+        alien.size.width = alien.size.width / self.frame.size.width * 80
+        alien.size.height = alien.size.height / self.frame.size.height * 80
+
         let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
 
         alien.position    = CGPoint(x: CGFloat(randomX), y: self.frame.size.height / 2 - alien.size.height);
