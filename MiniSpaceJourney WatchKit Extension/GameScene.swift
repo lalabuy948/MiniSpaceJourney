@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var spawnTorpedoTimer:Timer?
     
     var gameOver = false
-    var gameOverLabel = SKLabelNode()
+    var gameOverOverlay:SKSpriteNode = SKSpriteNode(imageNamed: "gameOver");
     
     // just CGFloat null, no magic numbers
     var cgNull:CGFloat = 0.0;
@@ -187,6 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (amountX >= 2 || amountX <= -2) {
             if (self.gameOver == true) {
                 self.hideGameOver()
+                score = 0;
             }
             if (self.scene?.isPaused == true) {
                 unpause()
@@ -282,8 +283,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // @todo: Better pause handling
         pause();
-        
-        score = 0;
     }
     
     public func pause() {
@@ -315,22 +314,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func showGameOver() -> Void {
         gameOver = true
         
-        gameOverLabel.name = "gameOver"
-        gameOverLabel.fontName = "Helvetica-Bold"
-        gameOverLabel.fontSize = 24
-        gameOverLabel.numberOfLines = 2
-        gameOverLabel.verticalAlignmentMode = .center
-        gameOverLabel.horizontalAlignmentMode = .center
-        gameOverLabel.text = "Game Over! \nMove crown to try again"
-        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        gameOverOverlay.name = "gameOver"
+        gameOverOverlay.size.width = self.frame.size.width
+        gameOverOverlay.size.height = self.frame.size.width / 1.5
 
-        self.addChild(gameOverLabel)
+        gameOverOverlay.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+
+        self.addChild(gameOverOverlay)
     }
     
     func hideGameOver() -> Void {
         gameOver = false
         
-        self.gameOverLabel.removeFromParent()
+        self.gameOverOverlay.removeFromParent()
     }
     
     override func update(_ currentTime: TimeInterval) {

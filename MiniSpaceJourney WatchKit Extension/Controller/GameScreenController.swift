@@ -14,7 +14,7 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
     
-    public var crownSensivity:Double = 20.0
+    public var crownSensivity:Double = 25.0
     
     var gameScene:GameScene!
     
