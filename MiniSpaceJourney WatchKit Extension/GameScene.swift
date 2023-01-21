@@ -121,8 +121,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         alien.name = "alien"
 
-        alien.size.width = alien.size.width / self.frame.size.width * 80
-        alien.size.height = alien.size.height / self.frame.size.height * 80
+        alien.size.width = alien.size.width / self.frame.size.width * 80 * 0.95
+        alien.size.height = alien.size.height / self.frame.size.height * 80 * 0.95
 
         let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
 
