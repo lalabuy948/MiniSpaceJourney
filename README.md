@@ -14,7 +14,7 @@
 
 <br><br>
 
-![preview](/github/0.1.0/preview.png)
+![preview](/github/1.0.0/preview.png)
 
 <hr>
 <br>
