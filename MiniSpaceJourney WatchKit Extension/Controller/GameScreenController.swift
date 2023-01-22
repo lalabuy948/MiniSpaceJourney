@@ -52,8 +52,14 @@ class GameScreenController: WKInterfaceController, WKCrownDelegate {
         gameScene.moveSpaceshipBy(amountX: cgStep, amountY: 0)
     }
     
-    // @todo: add pause/unpause by touches
-
+    @IBAction func tapHndler(_ sender: Any) {
+        if (gameScene.isPaused == true) {
+            gameScene.unpause();
+        } else {
+            gameScene.pause();
+        }
+    }
+    
     @IBAction func swipedRight(_ sender: Any) {
         
         WKInterfaceController.reloadRootPageControllers(

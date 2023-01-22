@@ -186,11 +186,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (amountX >= 2 || amountX <= -2) {
             if (self.gameOver == true) {
-                self.hideGameOver()
-                score = 0;
+                self.hideGameOver();
             }
             if (self.scene?.isPaused == true) {
-                unpause()
+                unpause();
             }
         }
         
@@ -296,8 +295,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public func unpause() {
         if (self.scene?.isPaused == true) {
             self.scene?.isPaused = false
-            resetGameplay()
-            setTimers()
+            resetGameplay();
+            setTimers();
+            if (gameOver == true) {
+                hideGameOver();
+            }
         }
     }
     
@@ -327,6 +329,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOver = false
         
         self.gameOverOverlay.removeFromParent()
+        
+        self.score = 0;
     }
     
     override func update(_ currentTime: TimeInterval) {

@@ -68,11 +68,17 @@
                                         <action selector="swipedRight:" destination="AgC-eL-Hgc" id="l0D-zs-zTH"/>
                                     </connections>
                                 </swipeGestureRecognizer>
+                                <tapGestureRecognizer id="b1I-DD-ofQ">
+                                    <connections>
+                                        <action selector="tapHndler:" destination="AgC-eL-Hgc" id="QxA-ZR-1rX"/>
+                                    </connections>
+                                </tapGestureRecognizer>
                             </gestureRecognizers>
                         </spriteKitScene>
                     </items>
                     <connections>
-                        <outlet property="skInterface" destination="ARY-87-yzO" id="U6w-Od-uXj"/>
+                        <outlet property="TapOutlet" destination="b1I-DD-ofQ" id="RTl-Ri-wO1"/>
+                        <outlet property="skInterface" destination="ARY-87-yzO" id="G0b-us-kV3"/>
                     </connections>
                 </controller>
             </objects>
