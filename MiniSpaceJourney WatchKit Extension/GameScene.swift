@@ -18,6 +18,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var spawnAlienTimer:Timer?
     var spawnTorpedoTimer:Timer?
     
+    var gameOver = false
+    var gameOverOverlay:SKSpriteNode = SKSpriteNode(imageNamed: "gameOver");
+    
     // just CGFloat null, no magic numbers
     var cgNull:CGFloat = 0.0;
     
@@ -64,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scoreLabel           = scoreLab;
                     scoreLabel.text      = "Score: 0";
                     scoreLabel.fontName  = "Helvetica-Bold";
-                    scoreLabel.fontSize  = 26;
+                    scoreLabel.fontSize  = 24;
                     scoreLabel.zPosition = 1;
                     score = 0;
                 }
@@ -115,6 +118,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func addAlien() {
         let possibleAlien = possibleAliens.randomElement()!;
         let alien         = SKSpriteNode(imageNamed: possibleAlien);
+        
+        alien.name = "alien"
+
+        alien.size.width = alien.size.width / self.frame.size.width * 80 * 0.95
+        alien.size.height = alien.size.height / self.frame.size.height * 80 * 0.95
+
         let randomX       = Int.random(in: -Int(self.frame.size.width / 2 - alien.size.width) ..< Int(self.frame.size.width / 2 - alien.size.width));
 
         alien.position    = CGPoint(x: CGFloat(randomX), y: self.frame.size.height / 2 - alien.size.height);
@@ -144,9 +153,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func fireTorpedo() {
         let torpedoNode = SKSpriteNode(imageNamed: "torpedo");
+        torpedoNode.name = "torpedo"
+
         torpedoNode.position    = spaceship.position;
         torpedoNode.position.y += 5;
         
+        torpedoNode.size.width = torpedoNode.size.width / self.frame.width * 40
+        torpedoNode.size.height = torpedoNode.size.height / self.frame.height * 40
+
         torpedoNode.physicsBody            = SKPhysicsBody(circleOfRadius: torpedoNode.size.width / 2);
         torpedoNode.physicsBody?.isDynamic = true;
         
@@ -171,6 +185,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func moveSpaceshipBy(amountX:CGFloat, amountY:CGFloat) {
         
         if (amountX >= 2 || amountX <= -2) {
+            if (self.gameOver == true) {
+                self.hideGameOver()
+                score = 0;
+            }
             if (self.scene?.isPaused == true) {
                 unpause()
             }
@@ -201,14 +219,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA;
         }
         
-        if (firstBody.categoryBitMask & photonTorpedoCategory) != 0
-            && (secondBody.categoryBitMask & alienCategory) != 0 {
-            torpedoCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode);
-        }
-        
-        if  (firstBody.categoryBitMask & alienCategory) != 0
-            && (secondBody.categoryBitMask & spaceshipCategory) != 0 {
-            alienCollidedWithSpaceship(alienNode: firstBody.node as! SKSpriteNode, spaceshipNode: secondBody.node as! SKSpriteNode);
+        if ((firstBody.node != nil) && (secondBody.node != nil)) {
+            
+            if (firstBody.categoryBitMask & photonTorpedoCategory) != 0
+                && (secondBody.categoryBitMask & alienCategory) != 0 {
+                torpedoCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode, alienNode: secondBody.node as! SKSpriteNode);
+            }
+            
+            if  (firstBody.categoryBitMask & alienCategory) != 0
+                    && (secondBody.categoryBitMask & spaceshipCategory) != 0 {
+                alienCollidedWithSpaceship(alienNode: firstBody.node as! SKSpriteNode, spaceshipNode: secondBody.node as! SKSpriteNode);
+            }
+
         }
     }
     
@@ -232,7 +254,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func alienCollidedWithSpaceship( alienNode:SKSpriteNode, spaceshipNode:SKSpriteNode) {
-        alienNode.removeFromParent();
+        
+        for node in self.children {
+            if node.name == "alien" {
+                node.removeFromParent()
+            }
+            
+            if node.name == "torpedo" {
+                node.removeFromParent()
+            }
+        }
 
         // add explosion
         let explosion = SKSpriteNode(fileNamed: "explosion")!;
@@ -248,10 +279,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.updateHighestScore(score: self.score);
         
+        self.showGameOver()
+        
         // @todo: Better pause handling
         pause();
-        
-        score = 0;
     }
     
     public func pause() {
@@ -278,6 +309,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (highestScore < score) {
             defaults.set(score, forKey: self.highestScorekey)
         }
+    }
+    
+    func showGameOver() -> Void {
+        gameOver = true
+        
+        gameOverOverlay.name = "gameOver"
+        gameOverOverlay.size.width = self.frame.size.width
+        gameOverOverlay.size.height = self.frame.size.width / 1.5
+
+        gameOverOverlay.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+
+        self.addChild(gameOverOverlay)
+    }
+    
+    func hideGameOver() -> Void {
+        gameOver = false
+        
+        self.gameOverOverlay.removeFromParent()
     }
     
     override func update(_ currentTime: TimeInterval) {
